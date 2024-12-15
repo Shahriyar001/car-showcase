@@ -1,9 +1,17 @@
-import React from "react";
+"use client";
+import { useState } from "react";
+import { SearchMenufacturer } from "./";
 
 const SearchBar = () => {
+  const [menufacturer, setMenufacturer] = useState("");
   return (
     <form className="searchbar" onSubmit={handleSearch}>
-      <div className="searchbar__item"></div>
+      <div className="searchbar__item">
+        <SearchMenufacturer
+          menufacturer={menufacturer}
+          setMenufacturer={setMenufacturer}
+        />
+      </div>
     </form>
   );
 };
