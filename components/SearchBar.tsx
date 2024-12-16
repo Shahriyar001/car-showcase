@@ -5,7 +5,7 @@ import { SearchMenufacturer } from "./";
 const SearchBar = () => {
   const [menufacturer, setMenufacturer] = useState("");
   return (
-    <form className="searchbar" onSubmit={handleSearch}>
+    <form className="searchbar">
       <div className="searchbar__item">
         <SearchMenufacturer
           menufacturer={menufacturer}
