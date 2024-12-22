@@ -2,10 +2,33 @@
 import { CustomFilterProps } from "@/types";
 import { Listbox, Transition } from "@headlessui/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 
 const CustomFilter = ({ title, options }: CustomFilterProps) => {
   const [selected, setSelected] = useState(options[0]);
+  const router = useRouter();
+
+  const handleUpdateParams = (type, value) => {
+    const newPathName = "";
+
+    const searchParams = new URLSearchParams(window.location.search);
+
+    searchParams.set(type, value);
+
+    if (manufacturer) {
+      searchParams.set("manufacturer", manufacturer);
+    } else {
+      searchParams.delete("manufacturer");
+    }
+
+    const newPathname = `${
+      window.location.pathname
+    }?${searchParams.toString()}`;
+
+    router.push(newPathName);
+  };
+
   return (
     <div className="w-fit">
       <Listbox value={selected} onChange={(e) => setSelected(e)}>
