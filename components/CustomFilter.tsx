@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import { useState } from "react";
 
 const CustomFilter = () => {
   return <div>customfilter</div>;
