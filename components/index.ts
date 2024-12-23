@@ -3,6 +3,7 @@ import CustomButton from "./CustomButton";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CarCard from "./CarCard";
+import ShowMore from "./ShowMore";
 import SearchBar from "./SearchBar";
 import CarDetails from "./CarDetails";
 import CustomFilter from "./CustomFilter";
@@ -13,6 +14,7 @@ export {
   CustomButton,
   CarCard,
   CarDetails,
+  ShowMore,
   Navbar,
   Footer,
   SearchBar,
