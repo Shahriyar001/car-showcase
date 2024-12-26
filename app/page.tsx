@@ -7,7 +7,7 @@ export default async function Home({ searchParams }) {
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year || 2022,
     fule: searchParams.fule || "",
-    limit: searchParams.limit || 16,
+    limit: searchParams.limit || 10,
     model: searchParams.model || "",
   });
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
@@ -36,7 +36,7 @@ export default async function Home({ searchParams }) {
               ))}
             </div>
             <ShowMore
-              pageNumber={(searchParams.pageNumber || 10) / 10}
+              pageNumber={(searchParams.limit || 10) / 10}
               isNext={(searchParams.limit || 10) > allCars.length}
             />
           </section>
