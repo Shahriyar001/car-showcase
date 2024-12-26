@@ -1,4 +1,11 @@
-import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
+import {
+  CarCard,
+  CustomFilter,
+  Hero,
+  Luxury,
+  SearchBar,
+  ShowMore,
+} from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
 import { fetchCars } from "@/utils";
 
@@ -15,7 +22,10 @@ export default async function Home({ searchParams }) {
   return (
     <main className="overflow-hidden">
       <Hero />
-      <div className="mt-12 padding-x padding-y max-width" id="discover">
+      <div
+        className="mt-12 padding-x padding-y mb-6 max-width"
+        id="discover bg-black"
+      >
         <div className="home__text-container">
           <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
           <p>Explore the cars you might like</p>
@@ -47,6 +57,7 @@ export default async function Home({ searchParams }) {
           </div>
         )}
       </div>
+      <Luxury />
     </main>
   );
 }

@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <ul className="flex items-center gap-2">
             <li className="border border-blue-50 px-4 py-2 rounded-full">
-              <Link href="/" className="flex items-center gap-1 text-lg">
+              <Link href="/repair" className="flex items-center gap-1 text-lg">
                 <GiAutoRepair />
                 <p className="hidden md:block lg:block">Repair</p>
               </Link>
