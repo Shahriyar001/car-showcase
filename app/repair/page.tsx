@@ -1,9 +1,10 @@
+import Banner from "@/components/RepairPage/Banner";
 import React from "react";
 
 const Repair = () => {
   return (
     <div>
-      <h1>repair page</h1>
+      <Banner />
     </div>
   );
 };
