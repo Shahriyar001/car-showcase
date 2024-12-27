@@ -25,8 +25,8 @@ const Banner = () => {
                 </button>
               </div>
             </div>
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href={banner.prev} className="btn btn-circle">
+            <div className="absolute right-12 bottom-12 flex  transform justify-between">
+              <a href={banner.prev} className="btn btn-circle mr-6">
                 ❮
               </a>
               <a href={banner.next} className="btn btn-circle">
