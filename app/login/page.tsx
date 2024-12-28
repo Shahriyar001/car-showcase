@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
@@ -6,12 +7,12 @@ import { FaFacebook, FaGoogle } from "react-icons/fa";
 const Login = () => {
   return (
     <div className="container mx-auto px-24 py-24">
-      <div className="grid grid-cols-1 my-10 lg:grid-cols-2 gap-12 lg:my-20">
+      <div className="grid grid-cols-1 my-10 lg:grid-cols-2 items-center gap-12 lg:my-20">
         <div className="flex items-center justify-center">
           <Image
             src="/assets/images/login/login.svg"
-            height={340}
-            width={340}
+            height={440}
+            width={440}
             alt="login image"
           />
         </div>
@@ -49,6 +50,12 @@ const Login = () => {
                 <BsGithub /> Github
               </button>
             </div>
+            <h6 className="my-12 text-center">
+              not have an account?{" "}
+              <Link className="text-primary font-semibold" href="/signup">
+                Sign Up
+              </Link>{" "}
+            </h6>
           </div>
         </div>
       </div>
