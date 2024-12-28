@@ -52,3 +52,18 @@ export interface ShowMoreProps {
   pageNumber: number;
   isNext: boolean;
 }
+
+export interface ServiceCardProps {
+  service: {
+    _id: string;
+    service_id: string;
+    title: string;
+    img: string;
+    price: string;
+    description: string;
+    facility: {
+      name: string;
+      details: string;
+    }[];
+  };
+}
