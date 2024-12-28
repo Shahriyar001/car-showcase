@@ -46,11 +46,20 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <CustomButton
-          title="Sign In"
-          btnType="button"
-          containerStyles="text-primary-blue rounded-full bg-white min-w-[130px] "
-        ></CustomButton>
+        <Link href="login">
+          <CustomButton
+            title="Login"
+            btnType="button"
+            containerStyles="text-primary-blue rounded-full bg-white min-w-[130px] "
+          ></CustomButton>
+        </Link>
+        <Link href="signup">
+          <CustomButton
+            title="Sign In"
+            btnType="button"
+            containerStyles="text-primary-blue rounded-full bg-white min-w-[130px] "
+          ></CustomButton>
+        </Link>
       </nav>
     </header>
   );
