@@ -5,7 +5,15 @@ import { BsGithub, BsGoogle } from "react-icons/bs";
 import Image from "next/image";
 
 const SignUp = () => {
-  const handleSignup = () => {};
+  const handleSignup = async (event: any) => {
+    event.preventDefault();
+    const newUser = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+    console.log(newUser);
+  };
   return (
     <div className="container mx-auto px-24 py-24">
       <div className="grid grid-cols-1 my-10 lg:grid-cols-2 items-center gap-12 lg:my-20">
@@ -25,6 +33,7 @@ const SignUp = () => {
                 <span className="label-text">Your Name</span>
               </div>
               <input
+                name="name"
                 type="text"
                 placeholder="Your Name"
                 className="input input-bordered w-full "
@@ -35,6 +44,7 @@ const SignUp = () => {
                 <span className="label-text">Email</span>
               </div>
               <input
+                name="email"
                 type="email"
                 placeholder="Your Email"
                 className="input input-bordered w-full "
@@ -45,6 +55,7 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </div>
               <input
+                name="password"
                 type="password"
                 placeholder="Password"
                 className="input input-bordered w-full "
