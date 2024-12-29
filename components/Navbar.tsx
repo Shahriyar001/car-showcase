@@ -53,13 +53,13 @@ const Navbar = () => {
             containerStyles="text-primary-blue rounded-full bg-white min-w-[130px] "
           ></CustomButton>
         </Link>
-        <Link href="signup">
+        {/* <Link href="signup">
           <CustomButton
             title="Sign In"
             btnType="button"
             containerStyles="text-primary-blue rounded-full bg-white min-w-[130px] "
           ></CustomButton>
-        </Link>
+        </Link> */}
       </nav>
     </header>
   );
