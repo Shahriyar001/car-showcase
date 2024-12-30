@@ -1,11 +1,22 @@
 "use client";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
 const Login = () => {
-  const handleLogin = async () => {};
+  const handleLogin = async (event: any) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const resp = signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    console.log(resp);
+  };
   return (
     <div className="container mx-auto px-24 py-24">
       <div className="grid grid-cols-1 my-10 lg:grid-cols-2 items-center gap-12 lg:my-20">
@@ -26,6 +37,7 @@ const Login = () => {
               </div>
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 className="input input-bordered w-full "
               />
@@ -36,6 +48,7 @@ const Login = () => {
               </div>
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 className="input input-bordered w-full "
               />

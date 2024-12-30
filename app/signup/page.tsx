@@ -12,17 +12,17 @@ const SignUp = () => {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    const resp = await fetch("http://localhost:3000/signup/api", {
+    const resp = await fetch("/api/signup", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log(resp);
-    // if (resp) {
-    //   event.target.reset();
-    // }
+    if (resp.status === 200) {
+      event.target.reset();
+      alert("user created successfully");
+    }
   };
   return (
     <div className="container mx-auto px-24 py-24">
