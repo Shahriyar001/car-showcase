@@ -1,4 +1,5 @@
 "use client";
+import SocialSignin from "@/components/SocialSignin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -66,12 +67,7 @@ const Login = () => {
           <div className="">
             <h6 className="my-3 text-center">or sign in width</h6>
             <div>
-              <button className="btn w-full  mb-2">
-                <BsGoogle /> Google
-              </button>
-              <button className="btn w-full ">
-                <BsGithub /> Github
-              </button>
+              <SocialSignin />
             </div>
             <h6 className="my-12 text-center">
               not have an account?{" "}

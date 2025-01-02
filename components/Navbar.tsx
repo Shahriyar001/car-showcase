@@ -52,23 +52,25 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        {!session.data ? (
-          <Link href="login">
-            <CustomButton
-              title="Login"
-              btnType="button"
-              containerStyles="text-primary-blue rounded-full bg-white min-w-[130px] "
-            ></CustomButton>
-          </Link>
-        ) : (
-          <button
-            className="border bg-slate-100 border-blue-50text-xl px-4 flex items-center text-xl gap-1 py-2 rounded-full "
-            onClick={() => signOut()}
-          >
-            <VscSignOut />
-            <p className="hidden md:block lg:block">Logout</p>
-          </button>
-        )}
+        <div className="flex items-center justify-center gap-1">
+          {!session.data ? (
+            <Link href="login">
+              <CustomButton
+                title="Login"
+                btnType="button"
+                containerStyles="text-primary-blue rounded-full bg-white min-w-[130px] "
+              ></CustomButton>
+            </Link>
+          ) : (
+            <button
+              className="border bg-slate-100 border-blue-50text-xl px-4 flex items-center text-xl gap-1 py-2 rounded-full "
+              onClick={() => signOut()}
+            >
+              <VscSignOut />
+              <p className="hidden md:block lg:block">Logout</p>
+            </button>
+          )}
+        </div>
 
         {/* <Link href="signup">
           <CustomButton

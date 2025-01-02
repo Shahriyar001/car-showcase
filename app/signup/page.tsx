@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import Image from "next/image";
+import SocialSignin from "@/components/SocialSignin";
 
 const SignUp = () => {
   const handleSignup = async (event: any) => {
@@ -78,14 +79,7 @@ const SignUp = () => {
           </form>
           <div className="">
             <h6 className="my-3 text-center">or sign in width</h6>
-            <div>
-              <button className="btn w-full  mb-2">
-                <BsGoogle /> Google
-              </button>
-              <button className="btn w-full ">
-                <BsGithub /> Github
-              </button>
-            </div>
+            <SocialSignin />
             <h6 className="my-12 text-center">
               Already have an account?{" "}
               <Link className="text-primary font-semibold" href="/login">

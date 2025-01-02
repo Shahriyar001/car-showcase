@@ -1,6 +1,8 @@
 import { connectDB } from "@/lib/connectDB";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
 
 interface User {
@@ -102,6 +104,15 @@ const handler = NextAuth({
         return { id: currentUser._id.toString(), email: currentUser.email };
       },
     }),
+    GoogleProvider({
+      clientId:
+        "1057925859769-gfsg26ph9vnidkd083j36hkg7filnfbs.apps.googleusercontent.com",
+      clientSecret: "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",
+    }),
+    GitHubProvider({
+      clientId: "a9163fe26bb93180fdc5",
+      clientSecret: "f4faea44ed4f2161d96d6a3f33d28e67546e6473",
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
@@ -124,3 +135,12 @@ const handler = NextAuth({
 });
 
 export { handler as GET, handler as POST };
+
+// GoogleProvider({
+//   clientId: '1057925859769-gfsg26ph9vnidkd083j36hkg7filnfbs.apps.googleusercontent.com',
+//   clientSecret: "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",
+// }),
+// GitHubProvider({
+//   clientId: process.env.NEXT_PUBLIC_GITHUB_ID!,
+//   clientSecret: process.env.NEXT_PUBLIC_GITHUB_SECRET!,
+// }),
