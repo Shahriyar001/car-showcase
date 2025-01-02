@@ -2,20 +2,25 @@
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
 const Login = () => {
+  const router = useRouter();
   const handleLogin = async (event: any) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const resp = signIn("credentials", {
+    const resp = await signIn("credentials", {
       email,
       password,
       redirect: false,
     });
     console.log(resp);
+    if (resp?.status === 200) {
+      router.push("/");
+    }
   };
   return (
     <div className="container mx-auto px-24 py-24">
