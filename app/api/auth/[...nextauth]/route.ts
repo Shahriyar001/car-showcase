@@ -11,6 +11,14 @@ interface User {
   password: string; // Add other fields as needed
 }
 
+interface MongoUser {
+  _id: string;
+  email: string;
+  password?: string; // Optional for OAuth users
+  name?: string;
+  image?: string;
+}
+
 // const handler = NextAuth({
 //   session: {
 //     strategy: "jwt",
@@ -115,6 +123,60 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
+    // async signIn({ user, account }) {
+    //   if (account.provider === "google" || account.provider === "github") {
+    //     const { name, email, image } = user;
+    //     try {
+    //       const db = connectDB();
+    //       const userCollection = db.collection("users");
+    //       const userExist = await userCollection.findOne({ email });
+    //       if (!userExist) {
+    //         const res = await userCollection.insertOne(user);
+    //         return user;
+    //       } else {
+    //         return user;
+    //       }
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   } else {
+    //     return user;
+    //   }
+    // },
+    async signIn({ user, account }) {
+      try {
+        const db = await connectDB();
+        const userCollection = db.collection<MongoUser>("users");
+
+        if (account.provider === "google" || account.provider === "github") {
+          const { email, name, image } = user;
+
+          if (!email) {
+            throw new Error("Email is required for OAuth users");
+          }
+
+          let existingUser = await userCollection.findOne({ email });
+
+          if (!existingUser) {
+            const newUser = {
+              email,
+              name,
+              image,
+              password: null, // OAuth users don't have a password
+            };
+            const result = await userCollection.insertOne(newUser);
+            return { id: result.insertedId.toString(), ...newUser };
+          }
+
+          return existingUser;
+        }
+
+        return user;
+      } catch (error) {
+        console.error("SignIn callback error:", error);
+        return false;
+      }
+    },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
