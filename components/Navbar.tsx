@@ -9,7 +9,6 @@ import { VscSignOut } from "react-icons/vsc";
 
 const Navbar = () => {
   const session = useSession();
-  console.log(session);
 
   return (
     <header className="w-full absolute z-10">

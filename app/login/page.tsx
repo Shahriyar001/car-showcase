@@ -18,7 +18,6 @@ const Login = () => {
       password,
       redirect: false,
     });
-    console.log(resp);
     if (resp?.status === 200) {
       router.push("/");
     }
