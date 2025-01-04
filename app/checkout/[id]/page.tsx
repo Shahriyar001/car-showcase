@@ -26,19 +26,19 @@ const Checkout = ({ params }: any) => {
       price: price,
     };
 
-    //     const resp = await fetch(
-    //       "https://car-doctor-pro-nine.vercel.app/checkout/api/new-booking",
-    //       {
-    //         method: "POST",
-    //         body: JSON.stringify(newBooking),
-    //         headers: {
-    //           "content-type": "application/json",
-    //         },
-    //       }
-    //     );
-    //     const response = await resp?.json();
-    //     toast.success(response?.message);
-    //     event.target.reset();
+    const resp = await fetch(
+      "https://car-doctor-pro-nine.vercel.app/checkout/api/new-booking",
+      {
+        method: "POST",
+        body: JSON.stringify(newBooking),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
+    const response = await resp?.json();
+    toast.success(response?.message);
+    event.target.reset();
   };
 
   useEffect(() => {
