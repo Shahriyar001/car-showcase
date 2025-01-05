@@ -73,6 +73,9 @@ const handler = NextAuth({
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
+  jwt: {
+    maxAge: 30 * 24 * 60 * 60, // Match session maxAge
+  },
   providers: [
     CredentialsProvider({
       credentials: {
@@ -186,7 +189,8 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       if (token) {
-        session.user = { id: token.id, email: token.email };
+        session.user = { id: token.id, email: token.email, name: token.name };
+        console.log("token", token);
       }
       return session;
     },
