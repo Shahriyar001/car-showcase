@@ -69,6 +69,7 @@ interface MongoUser {
 // export { handler as GET, handler as POST };
 
 const handler = NextAuth({
+  secret: "123456",
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
