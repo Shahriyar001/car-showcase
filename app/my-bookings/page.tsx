@@ -1,7 +1,38 @@
+"use client";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+interface Booking {
+  serviceTitle: string;
+  price: number;
+  date: string;
+}
 
 const page = () => {
+  const session = useSession();
+
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const loadData = async () => {
+    const email = session?.data?.user?.email || "shahriyarmahbub55@gmail.com";
+    console.log(email);
+
+    try {
+      const resp = await fetch(
+        `http://localhost:3000/my-bookings/api/${email}`
+      );
+      const data = await resp.json();
+      setBookings(data.myBookings || []);
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+    }
+  };
+  useEffect(() => {
+    if (session) {
+      loadData();
+    }
+  }, [session]);
+
   return (
     <div>
       <div className="relative  h-72">
@@ -33,14 +64,24 @@ const page = () => {
               </tr>
             </thead>
             <tbody>
-              {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-                <td>Blue</td>
-              </tr>
+              {bookings?.map((book, index) => (
+                <tr key={index}>
+                  <th>{index + 1}</th>
+                  <td>{book.serviceTitle}</td>
+                  <td>{book.price}</td>
+                  <td>{book.date}</td>
+                  <td>
+                    <div className="flex items-center space-x-3">
+                      <button className="btn btn-primary text-white">
+                        Edit
+                      </button>
+                      <button className="btn btn-error text-white">
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
