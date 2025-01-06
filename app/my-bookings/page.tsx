@@ -2,8 +2,10 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 interface Booking {
+  _id: string;
   serviceTitle: string;
   price: number;
   date: string;
@@ -27,6 +29,21 @@ const page = () => {
       console.error("Error fetching bookings:", error);
     }
   };
+
+  const handleDelete = async (id: string) => {
+    const deleted = await fetch(
+      `http://localhost:3000/my-bookings/api/booking/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const resp = deleted.json();
+    if (resp?.response?.deletedCount > 0) {
+      toast.success("deleted successfully");
+      loadData();
+    }
+  };
+
   useEffect(() => {
     if (session) {
       loadData();
@@ -34,7 +51,8 @@ const page = () => {
   }, [session]);
 
   return (
-    <div>
+    <div className="container mx-auto">
+      <ToastContainer />
       <div className="relative  h-72">
         <Image
           className="absolute h-72 w-full left-0 top-0 object-cover"
@@ -75,7 +93,11 @@ const page = () => {
                       <button className="btn btn-primary text-white">
                         Edit
                       </button>
-                      <button className="btn btn-error text-white">
+
+                      <button
+                        onClick={() => handleDelete(book._id)}
+                        className="btn btn-error text-white"
+                      >
                         Delete
                       </button>
                     </div>
