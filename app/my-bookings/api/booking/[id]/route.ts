@@ -20,18 +20,33 @@ export const DELETE = async (request: Request, { params }: any) => {
   }
 };
 
-// export const PETCH = async (request: Request, { params }: any) => {
-//   const db = await connectDB();
-//   const bookingsCollection = db.collection("bookings");
-//   try {
-//     const resp = await bookingsCollection.deleteOne({
-//       _id: new ObjectId(params.id),
-//     });
-//     return Response.json({ messege: "deleted the booking", response: resp });
-//   } catch (error) {
-//     return Response.json({ message: "Something went wrong" });
-//   }
-// };
+export const PATCH = async (request: Request, { params }: any) => {
+  const db = await connectDB();
+  const bookingsCollection = db.collection("bookings");
+  const { date, phone, address } = await request.json();
+  try {
+    const { id } = await params; // Await params
+    const resp = await bookingsCollection.updateOne(
+      { _id: new ObjectId(id) },
+      {
+        $set: {
+          date,
+          phone,
+          address,
+        },
+      },
+      {
+        upsert: true,
+      }
+    );
+    return NextResponse.json({
+      message: "Updated the booking",
+      response: resp,
+    });
+  } catch (error) {
+    return NextResponse.json({ message: "Something went wrong", error });
+  }
+};
 
 export const GET = async (request: Request, { params }: any) => {
   const db = await connectDB();
