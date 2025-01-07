@@ -23,16 +23,14 @@ export const DELETE = async (request: Request, { params }: any) => {
 export const PATCH = async (request: Request, { params }: any) => {
   const db = await connectDB();
   const bookingsCollection = db.collection("bookings");
-  const { date, phone, address } = await request.json();
+  const updateDoc = await request.json();
   try {
     const { id } = await params; // Await params
     const resp = await bookingsCollection.updateOne(
       { _id: new ObjectId(id) },
       {
         $set: {
-          date,
-          phone,
-          address,
+          ...updateDoc,
         },
       },
       {

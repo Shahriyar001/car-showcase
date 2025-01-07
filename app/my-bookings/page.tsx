@@ -1,6 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -90,9 +91,11 @@ const page = () => {
                   <td>{book.date}</td>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <button className="btn btn-primary text-white">
-                        Edit
-                      </button>
+                      <Link href={`/my-bookings/update/${book._id}`}>
+                        <button className="btn btn-primary text-white">
+                          Edit
+                        </button>
+                      </Link>
 
                       <button
                         onClick={() => handleDelete(book._id)}
