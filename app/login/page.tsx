@@ -3,12 +3,14 @@ import SocialSignin from "@/components/SocialSignin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
 const Login = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const path = searchParams.get("redirect");
   const handleLogin = async (event: any) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -16,7 +18,8 @@ const Login = () => {
     const resp = await signIn("credentials", {
       email,
       password,
-      redirect: false,
+      redirect: true,
+      callbackUrl: path ? path : "/",
     });
     if (resp?.status === 200) {
       router.push("/");

@@ -1,14 +1,19 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
 const SocialSignin = () => {
   const router = useRouter();
   const { status } = useSession();
+  const searchParams = useSearchParams();
+  const path = searchParams.get("redirect");
   const handleSocilaLogin = async (provider: any) => {
-    const resp = await signIn(provider, { redirect: false });
+    const resp = await signIn(provider, {
+      redirect: true,
+      callbackUrl: path ? path : "/",
+    });
   };
 
   useEffect(() => {
