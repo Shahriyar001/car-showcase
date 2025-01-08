@@ -111,6 +111,9 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                         </div>
                       ))}
                     </div>
+                    {/* <div className="">
+                      <button className="btn btn-primary ">Book Now</button>
+                    </div> */}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
