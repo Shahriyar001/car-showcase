@@ -1,0 +1,134 @@
+[
+  {
+    "title": "Toyota Fortuner",
+    "type": "Automatic",
+    "milage": "10",
+    "fule": "Diesel",
+    "wheel": "All-Terrain",
+    "model": "2022",
+    "sit": "7",
+    "image": "https://www.financialexpress.com/wp-content/uploads/2024/10/toyota-fortuner-leader-edition_20241001131301.jpg?w=1024",
+    "rent": "10000"
+  },
+  {
+    "title": "Toyota Prado",
+    "type": "Automatic",
+    "milage": "9",
+    "fule": "Diesel",
+    "wheel": "Luxury",
+    "model": "2021",
+    "sit": "7",
+    "image": "https://tcl-s3-bucket.s3.amazonaws.com/web/media/images/Prado_GDJ250L-GNZLY_01_089_33.2e16d0ba.fill-960x540.png",
+    "rent": "12000"
+  },
+  {
+    "title": "Toyota Corolla",
+    "type": "Manual",
+    "milage": "14",
+    "fule": "Petrol",
+    "wheel": "Basic",
+    "model": "2020",
+    "sit": "5",
+    "image": "https://www.motortrend.com/uploads/sites/10/2015/11/2012-toyota-corolla-s-at-sedan-angular-front.png?w=768&width=768&q=75&format=webp",
+    "rent": "5000"
+  },
+  {
+    "title": "Toyota Premio",
+    "type": "Automatic",
+    "milage": "12",
+    "fule": "Petrol",
+    "wheel": "Luxury",
+    "model": "2021",
+    "sit": "5",
+    "image": "https://global.toyota/pages/models/images/20191018/kv/premio_ogp_01.jpg",
+    "rent": "8000"
+  },
+  {
+    "title": "Toyota Harrier",
+    "type": "Automatic",
+    "milage": "11",
+    "fule": "Petrol",
+    "wheel": "Luxury",
+    "model": "2022",
+    "sit": "5",
+    "image": "https://www.tbsnews.net/sites/default/files/styles/big_3/public/images/2020/04/18/lead_image.jpg",
+    "rent": "9000"
+  },
+  {
+    "title": "Honda Civic",
+    "type": "Automatic",
+    "milage": "13",
+    "fule": "Petrol",
+    "wheel": "Sport",
+    "model": "2021",
+    "sit": "5",
+    "image": "https://imgd.aeplcdn.com/664x374/n/cw/ec/27074/civic-exterior-right-front-three-quarter-148155.jpeg?q=80",
+    "rent": "7000"
+  },
+  {
+    "title": "Toyota Prius",
+    "type": "Automatic",
+    "milage": "18",
+    "fule": "Hybrid",
+    "wheel": "Eco",
+    "model": "2020",
+    "sit": "5",
+    "image": "https://global.toyota/pages/news/images/2015/12/09/1300/pri1512_19_s.jpg",
+    "rent": "6000"
+  },
+  {
+    "title": "BYD Auto",
+    "type": "Automatic",
+    "milage": "15",
+    "fule": "Electric",
+    "wheel": "Basic",
+    "model": "2022",
+    "sit": "5",
+    "image": "https://i.ibb.co.com/gFVNkBZ/Nav-BYD-ATTO3.png",
+    "rent": "8000"
+  },
+  {
+    "title": "Nissan X-Trail",
+    "type": "Automatic",
+    "milage": "12",
+    "fule": "Petrol",
+    "wheel": "SUV",
+    "model": "2021",
+    "sit": "5",
+    "image": "https://wieck-nissanao-stage.s3-us-west-1.amazonaws.com/releaseInlineImages/7e31f3c79fdd1965f17717ffd63dd930bc0ee9e7",
+    "rent": "7500"
+  },
+  {
+    "title": "Toyota Noah Esquire",
+    "type": "Automatic",
+    "milage": "11",
+    "fule": "Hybrid",
+    "wheel": "Luxury",
+    "model": "2022",
+    "sit": "7",
+    "image": "https://global.toyota/pages/news/images/2014/10/29/1330/s/esq1410_02_s.jpg",
+    "rent": "8500"
+  },
+  {
+    "title": "Toyota Hiace",
+    "type": "Manual",
+    "milage": "8",
+    "fule": "Diesel",
+    "wheel": "Commercial",
+    "model": "2020",
+    "sit": "15",
+    "image": "https://global.toyota/pages/news/older/images/2004/08/23/rendition/20040823_01_01_W610_H407.jpg",
+    "rent": "13000"
+  },
+  {
+    "title": "Toyota Minibus",
+    "type": "Manual",
+    "milage": "8",
+    "fule": "Diesel",
+    "wheel": "Commercial",
+    "model": "2019",
+    "sit": "15",
+    "image": "https://zeromile.com.bd/wp-content/uploads/2023/03/01-e1679464668662.png",
+    "rent": "15000"
+  }
+]

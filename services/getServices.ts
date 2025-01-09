@@ -10,3 +10,9 @@ export const getServicesDetails = async (id: any) => {
   const service = res.json();
   return service;
 };
+
+export const getCars = async () => {
+  const res = await axios("http://localhost:3000/api/cars");
+  console.log(res.data);
+  return res.data;
+};

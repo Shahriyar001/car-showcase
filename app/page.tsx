@@ -1,4 +1,5 @@
 import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
+import Cars from "@/components/Cars";
 import MainServices from "@/components/MainServices";
 import { fuels, yearsOfProduction } from "@/constants";
 // import { fetchCars } from "@/utils";
@@ -32,6 +33,8 @@ export default async function Home({ searchParams }) {
           </div>
         </div>
         <div className="home__cars"></div>
+        <Cars />
+
         {/* {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
