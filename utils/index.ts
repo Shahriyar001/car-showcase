@@ -19,25 +19,25 @@ import axios from "axios";
 //   const result = await response.json();
 //   return result;
 // }
-export async function fetchCars(filters: FilterProps) {
-  const { manufacturer, year, fuel, limit, model } = filters;
+// export async function fetchCars(filters: FilterProps) {
+//   const { manufacturer, year, fuel, limit, model } = filters;
 
-  const headers = {
-    "x-rapidapi-key": "af173f1065mshbc5491b12abe825p11cea7jsn65416b742dc2",
-    "x-rapidapi-host": "cars-by-api-ninjas.p.rapidapi.com",
-  };
+//   const headers = {
+//     "x-rapidapi-key": "af173f1065mshbc5491b12abe825p11cea7jsn65416b742dc2",
+//     "x-rapidapi-host": "cars-by-api-ninjas.p.rapidapi.com",
+//   };
 
-  const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`;
+//   const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`;
 
-  try {
-    // Making the API request using axios
-    const response = await axios.get(url, { headers });
-    return response.data; // Return the response data
-  } catch (error) {
-    console.error("Error fetching cars:", error);
-    throw new Error("Failed to fetch cars."); // Handle errors gracefully
-  }
-}
+//   try {
+//     // Making the API request using axios
+//     const response = await axios.get(url, { headers });
+//     return response.data; // Return the response data
+//   } catch (error) {
+//     console.error("Error fetching cars:", error);
+//     throw new Error("Failed to fetch cars."); // Handle errors gracefully
+//   }
+// }
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 50; // Base rental price per day in dollars
