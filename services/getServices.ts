@@ -12,7 +12,13 @@ export const getServicesDetails = async (id: any) => {
 };
 
 export const getCars = async () => {
-  const res = await axios("http://localhost:3000/api/cars");
+  const res = await axios("http://localhost:3000/api/cars/get-all");
   console.log(res.data);
   return res.data;
+};
+
+export const getCarsDetails = async (id: any) => {
+  const res = await fetch(`http://localhost:3000/api/cars/${id}`);
+  const car = res.json();
+  return car;
 };
