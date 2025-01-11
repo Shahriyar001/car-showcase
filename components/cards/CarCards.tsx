@@ -74,7 +74,7 @@ const CarCards = ({ car }: any) => {
           className="btn btn-primary w-full text-white flex items-center hover:btn-success"
         >
           <FaRegCalendarCheck />
-          Rent now
+          View Details
         </button>
         {/* </Link> */}
       </div>

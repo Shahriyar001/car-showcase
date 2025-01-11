@@ -4,6 +4,7 @@ import { CarProps } from "@/types";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { generateCarImageUrl } from "@/utils";
+import Link from "next/link";
 
 interface CarDetailsProps {
   isOpen: boolean;
@@ -129,11 +130,13 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                           </div>
                         ))}
                     </div>
-                    <form action=""></form>
-
-                    {/* <div className="">
-                      <button className="btn btn-primary ">Book Now</button>
-                    </div> */}
+                    <Link href={`/car-checkout/${car._id}`}>
+                      <div className="">
+                        <button className="btn btn-primary w-full ">
+                          Book Now
+                        </button>
+                      </div>
+                    </Link>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
