@@ -1,5 +1,5 @@
 "use client";
-import { getCarsDetails, getServicesDetails } from "@/services/getServices";
+import { getCarsDetails } from "@/services/getServices";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -20,7 +20,7 @@ const Checkout = ({ params }: any) => {
 
   const handleBooking = async (event: any) => {
     event.preventDefault();
-    const newBooking = {
+    const carBooking = {
       email: data?.user?.email,
       name: event.target.name.value,
       address: event.target.address.value,
@@ -28,16 +28,19 @@ const Checkout = ({ params }: any) => {
       date: event.target.date.value,
       serviceTitle: title,
       serviceID: _id,
-      price: rent,
+      rent: rent,
     };
 
-    const resp = await fetch("http://localhost:3000/checkout/api/new-booking", {
-      method: "POST",
-      body: JSON.stringify(newBooking),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
+    const resp = await fetch(
+      "http://localhost:3000/car-checkout/api/car-booking",
+      {
+        method: "POST",
+        body: JSON.stringify(carBooking),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
     const response = await resp?.json();
     toast.success(response?.message);
     event.target.reset();
@@ -123,7 +126,6 @@ const Checkout = ({ params }: any) => {
                 <span className="label-text">Phone</span>
               </label>
               <input
-                required
                 type="text"
                 name="phone"
                 required
