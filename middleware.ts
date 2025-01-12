@@ -2,7 +2,9 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const middleware = async (request: Request) => {
-  const token = (await cookies(request)).get("next-auth.session-token");
+  const token = (await cookies(request)).get(
+    "__Secure-next-auth.session-token"
+  );
   const pathname = request.nextUrl.pathname;
   if (pathname.includes("api")) {
     return NextResponse.next();
@@ -18,5 +20,3 @@ export const middleware = async (request: Request) => {
 export const config = {
   matcher: ["/my-bookings/:path*", "/services/:path", "/car-bookings/:path*"],
 };
-
-// 9.06

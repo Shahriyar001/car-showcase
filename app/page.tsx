@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import Cars from "@/components/Cars";
 import ContactUs from "@/components/ContactUs";
