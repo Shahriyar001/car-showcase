@@ -16,7 +16,7 @@ export const middleware = async (request: Request) => {
 };
 
 export const config = {
-  matcher: ["/my-bookings/:path*", "/services/:path"],
+  matcher: ["/my-bookings/:path*", "/services/:path", "/car-bookings/:path*"],
 };
 
 // 9.06

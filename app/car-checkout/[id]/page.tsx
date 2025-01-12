@@ -16,7 +16,7 @@ const Checkout = ({ params }: any) => {
     console.log("details", details);
     setCar(details.car);
   };
-  const { _id, title, description, image, rent, facility } = (car as any) || {};
+  const { _id, title, image, rent } = (car as any) || {};
 
   const handleBooking = async (event: any) => {
     event.preventDefault();
@@ -68,6 +68,15 @@ const Checkout = ({ params }: any) => {
           </h1>
         </div>
       </div>
+      {(!rent || rent < 0) && (
+        <>
+          {" "}
+          <p className="flex items-center text-xl">
+            Loading
+            <span className="loading loading-dots loading-md"></span>
+          </p>
+        </>
+      )}
       <div className="my-12 bg-slate-300 p-12">
         <form onSubmit={handleBooking}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

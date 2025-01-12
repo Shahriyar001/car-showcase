@@ -8,7 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 interface Booking {
   _id: string;
   serviceTitle: string;
-  price: number;
+  rent: number;
   date: string;
 }
 
@@ -25,7 +25,8 @@ const page = () => {
         `http://localhost:3000/car-bookings/api/${email}`
       );
       const data = await resp.json();
-      setBookings(data.myBookings || []);
+      console.log("data", data);
+      setBookings(data.carBookings || []);
     } catch (error) {
       console.error("Error fetching bookings:", error);
     }
@@ -33,17 +34,17 @@ const page = () => {
 
   const handleDelete = async (id: string) => {
     console.log("delete");
-    // const deleted = await fetch(
-    //   `http://localhost:3000/my-bookings/api/booking/${id}`,
-    //   {
-    //     method: "DELETE",
-    //   }
-    // );
-    // const resp = deleted.json();
-    // if (resp?.response?.deletedCount > 0) {
-    //   toast.success("deleted successfully");
-    //   loadData();
-    // }
+    const deleted = await fetch(
+      `http://localhost:3000/car-bookings/api/delete/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const resp = deleted.json();
+    if (resp?.response?.deletedCount > 0) {
+      toast.success("deleted successfully");
+      loadData();
+    }
   };
 
   useEffect(() => {
@@ -84,27 +85,29 @@ const page = () => {
               </tr>
             </thead>
             <tbody>
+              {(!bookings || bookings.length === 0) && (
+                <tr>
+                  <td colSpan={5} className="text-center">
+                    <p className="flex items-center justify-center text-xl">
+                      Loading
+                      <span className="loading loading-dots loading-md ml-2"></span>
+                    </p>
+                  </td>
+                </tr>
+              )}
               {bookings?.map((book, index) => (
                 <tr key={index}>
                   <th>{index + 1}</th>
                   <td>{book.serviceTitle}</td>
-                  <td>{book.price}</td>
+                  <td>{book.rent}</td>
                   <td>{book.date}</td>
                   <td>
-                    <div className="flex items-center space-x-3">
-                      <Link href={`/my-bookings/update/${book._id}`}>
-                        <button className="btn btn-primary text-white">
-                          Edit
-                        </button>
-                      </Link>
-
-                      <button
-                        onClick={() => handleDelete(book._id)}
-                        className="btn btn-error text-white"
-                      >
-                        Delete
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => handleDelete(book._id)}
+                      className="btn btn-error text-white"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

@@ -5,6 +5,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { generateCarImageUrl } from "@/utils";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 interface CarDetailsProps {
   isOpen: boolean;
@@ -12,6 +13,28 @@ interface CarDetailsProps {
   car: any;
 }
 const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
+  // const { data } = useSession();
+  // email: data?.user?.email;
+  // const handleBooking = (carId: string) => {
+  //   if (!email) {
+  //     alert("Please log in to proceed.");
+  //     return;
+  //   }
+  //   // Logic to navigate or perform an action if logged in
+  //   window.location.href = `/car-checkout/${carId}`;
+  // };
+
+  const { data } = useSession();
+  const email = data?.user?.email;
+
+  const handleBooking = (carId: string) => {
+    if (!email) {
+      alert("Please log in to proceed.");
+      return;
+    }
+    // Logic to navigate or perform an action if logged in
+    window.location.href = `/car-checkout/${carId}`;
+  };
   // const { _id, image, title, rent, type, milage, fule, wheel, model, sit } = car
   return (
     <>
@@ -130,13 +153,19 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                           </div>
                         ))}
                     </div>
-                    <Link href={`/car-checkout/${car._id}`}>
+                    {/* <Link href={`/car-checkout/${car._id}`}>
                       <div className="">
                         <button className="btn btn-primary w-full ">
                           Book Now
                         </button>
                       </div>
-                    </Link>
+                    </Link> */}
+                    <button
+                      className="btn btn-primary w-full"
+                      onClick={() => handleBooking(car._id)}
+                    >
+                      Book Now
+                    </button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

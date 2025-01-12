@@ -83,6 +83,16 @@ const page = () => {
               </tr>
             </thead>
             <tbody>
+              {(!bookings || bookings.length === 0) && (
+                <tr>
+                  <td colSpan={5} className="text-center">
+                    <p className="flex items-center justify-center text-xl">
+                      Loading
+                      <span className="loading loading-dots loading-md ml-2"></span>
+                    </p>
+                  </td>
+                </tr>
+              )}
               {bookings?.map((book, index) => (
                 <tr key={index}>
                   <th>{index + 1}</th>
