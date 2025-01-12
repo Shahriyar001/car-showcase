@@ -30,7 +30,7 @@ const Testimonials = () => {
 
   return (
     <div className="my-10 py-8">
-      <div className="flex justify-between">
+      <div className="flex justify-between my-6">
         <div>
           <h4 className="text-xl text-primary font-bold">Testimonial</h4>
           <h2 className="text-4xl">What Our Clients Says</h2>
@@ -41,7 +41,7 @@ const Testimonials = () => {
           </h1>
         </div>
       </div>
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10">
         {reviews.map((review) => (
           <Review key={review._id} review={review}></Review>
         ))}

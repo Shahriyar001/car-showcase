@@ -1,5 +1,7 @@
 import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import Cars from "@/components/Cars";
+import ContactUs from "@/components/ContactUs";
+import Faq from "@/components/Faq";
 import MainServices from "@/components/MainServices";
 import Testimonials from "@/components/Testimonials";
 import { fuels, yearsOfProduction } from "@/constants";
@@ -17,7 +19,18 @@ export default async function Home({ searchParams }) {
   return (
     <main className="overflow-hidden">
       <Hero />
+      <div
+        className="mt-12 padding-x padding-y mb-2 max-width"
+        id="discover bg-black"
+      >
+        {/* <div className="home__text-container"> */}
+        <div className="text-center">
+          <h1 className="text-4xl font-extrabold my-3">Our Services</h1>
+          <p>We primarily provide two services.</p>
+        </div>
+      </div>
       <MainServices />
+
       <div
         className="mt-12 padding-x padding-y mb-6 max-width"
         id="discover bg-black"
@@ -35,7 +48,9 @@ export default async function Home({ searchParams }) {
         </div>
         <div className="home__cars"></div>
         <Cars />
+        <Faq />
         <Testimonials />
+        <ContactUs />
 
         {/* {!isDataEmpty ? (
           <section>
