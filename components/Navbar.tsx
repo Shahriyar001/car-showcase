@@ -134,7 +134,7 @@ const Navbar = () => {
   const handleLinkClick = (e: React.MouseEvent, path: string) => {
     if (!session) {
       e.preventDefault();
-      alert("Please login first");
+      alert("Please login first!");
     }
   };
 
