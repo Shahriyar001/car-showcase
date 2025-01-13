@@ -126,7 +126,6 @@ import { IoLogoModelS } from "react-icons/io";
 const Navbar = () => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [showLoginPopup, setShowLoginPopup] = useState<boolean>(false);
 
   const toggleDropdown = (): void => {
     setIsOpen((prev) => !prev);
@@ -135,12 +134,8 @@ const Navbar = () => {
   const handleLinkClick = (e: React.MouseEvent, path: string) => {
     if (!session) {
       e.preventDefault();
-      setShowLoginPopup(true); // Show login popup if not logged in
+      alert("Please login first");
     }
-  };
-
-  const closeLoginPopup = () => {
-    setShowLoginPopup(false);
   };
 
   return (
@@ -230,21 +225,6 @@ const Navbar = () => {
           )}
         </div>
       </nav>
-
-      {/* Popup Modal */}
-      {showLoginPopup && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-20">
-          <div className="bg-white p-6 rounded-lg text-center w-80">
-            <h3 className="text-xl mb-4">Please login first</h3>
-            <button
-              onClick={closeLoginPopup}
-              className="border bg-blue-500 text-white px-4 py-2 rounded-full"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
