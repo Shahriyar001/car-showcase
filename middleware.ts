@@ -202,6 +202,4 @@ export const middleware = async (request: NextRequest) => {
   }
 };
 
-export const config = {
-  matcher: ["/my-bookings/:path*", "/services/:path*", "/car-bookings/:path*"],
-};
+export const config = {};
