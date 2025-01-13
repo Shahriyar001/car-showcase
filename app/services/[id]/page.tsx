@@ -8,7 +8,7 @@ export const metadata = {
   description: "Service Details Page",
 };
 
-const Page = async ({ params }: { params: { id: string } }) => {
+const Page = async ({ params }: any) => {
   // const details = await getServicesDetails(params.id);
 
   const details = await getServicesDetails(params.id);

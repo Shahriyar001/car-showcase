@@ -1,5 +1,4 @@
 "use client";
-import image from "next/image";
 import Image from "next/image";
 import CustomButton from "./CustomButton";
 const Hero = () => {

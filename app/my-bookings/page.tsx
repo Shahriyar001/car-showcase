@@ -38,7 +38,7 @@ const page = () => {
         method: "DELETE",
       }
     );
-    const resp = deleted.json();
+    const resp: any = deleted.json();
     if (resp?.response?.deletedCount > 0) {
       toast.success("deleted successfully");
       loadData();

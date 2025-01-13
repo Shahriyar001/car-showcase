@@ -148,7 +148,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                               {key.split("_").join(" ")}
                             </h4>
                             <p className="text-black-100 font-semibold">
-                              {value}
+                              {String(value)}
                             </p>
                           </div>
                         ))}

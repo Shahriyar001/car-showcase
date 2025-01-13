@@ -24,7 +24,7 @@ const page = () => {
       const resp = await fetch(
         `http://localhost:3000/car-bookings/api/${email}`
       );
-      const data = await resp.json();
+      const data: any = await resp.json();
       console.log("data", data);
       setBookings(data.carBookings || []);
     } catch (error) {
@@ -40,7 +40,7 @@ const page = () => {
         method: "DELETE",
       }
     );
-    const resp = deleted.json();
+    const resp: any = deleted.json();
     if (resp?.response?.deletedCount > 0) {
       toast.success("deleted successfully");
       loadData();

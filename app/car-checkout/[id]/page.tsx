@@ -85,7 +85,7 @@ const Checkout = ({ params }: any) => {
                 <span className="label-text">Name</span>
               </label>
               <input
-                defaultValue={data?.user?.name}
+                defaultValue={data?.user?.name ?? ""}
                 placeholder="Your Name"
                 type="text"
                 name="name"
@@ -110,7 +110,7 @@ const Checkout = ({ params }: any) => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                defaultValue={data?.user?.email}
+                defaultValue={data?.user?.email ?? ""}
                 type="text"
                 name="email"
                 placeholder="email"
@@ -123,7 +123,7 @@ const Checkout = ({ params }: any) => {
                 <span className="label-text">Due amount</span>
               </label>
               <input
-                defaultValue={rent}
+                defaultValue={rent ?? ""}
                 readOnly
                 type="text"
                 name="price"

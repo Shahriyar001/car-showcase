@@ -12,61 +12,12 @@ interface User {
 }
 
 interface MongoUser {
-  _id: string;
+  _id?: string;
   email: string;
   password?: string; // Optional for OAuth users
   name?: string;
   image?: string;
 }
-
-// const handler = NextAuth({
-//   session: {
-//     strategy: "jwt",
-//     maxAge: 30 * 24 * 60 * 60,
-//   },
-//   providers: [
-//     CredentialsProvider({
-//       credentials: {
-//         email: {},
-//         password: {},
-//       },
-//       async authorize(credentials) {
-//         if (!credentials) {
-//           return null;
-//         }
-//         const { email, password } = credentials;
-//         if (!email || !password) {
-//           return null;
-//         }
-
-//         const db = connectDB();
-//         const currentUser = (await db)
-//           .collection<User>("users")
-//           .findOne({ email });
-
-//         if (!currentUser) {
-//           return null;
-//         }
-
-//         const passwordMatched = bcrypt.compareSync(
-//           password,
-//           currentUser.password
-//         );
-
-//         if (!passwordMatched) {
-//           return null;
-//         }
-//         return currentUser;
-//       },
-//     }),
-//   ],
-//   callbacks: {},
-//   pages: {
-//     signIn: "/login",
-//   },
-// });
-
-// export { handler as GET, handler as POST };
 
 const handler = NextAuth({
   secret: "123456",
@@ -147,10 +98,10 @@ const handler = NextAuth({
     //     return user;
     //   }
     // },
-    async signIn({ user, account }) {
+    async signIn({ user, account }: any) {
       try {
         const db = await connectDB();
-        const userCollection = db.collection<MongoUser>("users");
+        const userCollection = db.collection<any>("users");
 
         if (account.provider === "google" || account.provider === "github") {
           const { email, name, image } = user;
@@ -181,14 +132,49 @@ const handler = NextAuth({
         return false;
       }
     },
-    async jwt({ token, user }) {
+    // async signIn({ user, account }) {
+    //   try {
+    //     const db = await connectDB();
+    //     const userCollection = db.collection<MongoUser>("users");
+
+    //     if (account.provider === "google" || account.provider === "github") {
+    //       const { email, name, image } = user;
+
+    //       if (!email) {
+    //         throw new Error("Email is required for OAuth users");
+    //       }
+
+    //       let existingUser = await userCollection.findOne({ email });
+
+    //       if (!existingUser) {
+    //         const newUser = {
+    //           email,
+    //           name,
+    //           image,
+    //           password: null, // OAuth users don't have a password
+    //         };
+    //         const result = await userCollection.insertOne(newUser);
+    //         return result.insertedId.toString(); // Return the user ID as a string
+    //         // return { id: result.insertedId.toString() };
+    //       }
+
+    //       return existingUser._id.toString(); // Return the existing user ID as a string
+    //     }
+
+    //     return user.id.toString(); // For non-OAuth users, return their ID as a string
+    //   } catch (error) {
+    //     console.error("SignIn callback error:", error);
+    //     return false; // Return false if there was an error
+    //   }
+    // },
+    async jwt({ token, user }: any) {
       if (user) {
         token.id = user.id;
         token.email = user.email;
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: any) {
       if (token) {
         session.user = { id: token.id, email: token.email, name: token.name };
         console.log("token", token);

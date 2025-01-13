@@ -1,36 +1,3 @@
-// import Image from "next/image";
-// import React from "react";
-
-// const Luxury = () => {
-//   return (
-//     <div>
-//       <div className="hero lg:h-96">
-//         <div className="hero-content flex-col lg:flex-row-reverse">
-//           <Image
-//             src="https://anpsthemes.com/limorent/demo-1/wp-content/uploads/2016/01/calltoaction-merc.png"
-//             className=" rounded-lg shadow-2xl"
-//             alt="car img"
-//             width={679} // Specify width
-//             height={316} // Specify height
-//           />
-
-//           <div>
-//             <h1 className="text-5xl font-bold">Box Office News!</h1>
-//             <p className="py-6">
-//               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-//               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-//               et a id nisi.
-//             </p>
-//             <button className="btn btn-primary">Get Started</button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Luxury;
-
 import Image from "next/image";
 import React from "react";
 

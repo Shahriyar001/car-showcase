@@ -4,9 +4,16 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+interface Booking {
+  price: string;
+  phone: string;
+  address: string;
+}
+
 const Page = ({ params }: any) => {
   const { data } = useSession();
-  const [booking, setBooking] = useState([]);
+  const [booking, setBooking] = useState<Booking | null>(null);
+
   const unwrappedParams: any = React.use(params);
 
   const loadBooking = async () => {
@@ -68,7 +75,7 @@ const Page = ({ params }: any) => {
                 <span className="label-text">Name</span>
               </label>
               <input
-                defaultValue={data?.user?.name}
+                defaultValue={data?.user?.name ?? ""}
                 type="text"
                 name="name"
                 className="input input-bordered"
@@ -85,7 +92,7 @@ const Page = ({ params }: any) => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                defaultValue={data?.user?.email}
+                defaultValue={data?.user?.email ?? ""}
                 type="text"
                 name="email"
                 placeholder="email"

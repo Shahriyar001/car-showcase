@@ -38,7 +38,7 @@ export async function POST(request: Request) {
       JSON.stringify({ message: "User created successfully", data: resp }),
       { status: 201 }
     );
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error in POST handler:", error);
     return new Response(
       JSON.stringify({
