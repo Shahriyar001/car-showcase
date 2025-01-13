@@ -176,16 +176,43 @@
 //   matcher: ["/my-bookings/:path*", "/services/:path*", "/car-bookings/:path*"],
 // };
 
+// import { NextResponse, NextRequest } from "next/server";
+
+// export const middleware = async (request: NextRequest) => {
+//   try {
+//     // Get the cookie using async/await
+//     const token = request.cookies.get("next-auth.session-token")?.value;
+//     const pathname = request.nextUrl.pathname;
+
+//     // Allow API routes to proceed without authentication
+//     if (pathname.includes("api")) {
+//       return NextResponse.next();
+//     }
+
+//     // Redirect unauthenticated users to the login page
+//     if (!token) {
+//       return NextResponse.redirect(
+//         new URL(`/login?redirect=${pathname}`, request.url)
+//       );
+//     }
+//     return NextResponse.next();
+//   } catch (error) {
+//     // Optionally handle errors (e.g., return an error response or log the issue)
+//     return NextResponse.redirect(new URL("/error", request.url));
+//   }
+// };
+
+// export const config = {};
+
 import { NextResponse, NextRequest } from "next/server";
 
 export const middleware = async (request: NextRequest) => {
   try {
-    // Get the cookie using async/await
     const token = request.cookies.get("next-auth.session-token")?.value;
     const pathname = request.nextUrl.pathname;
 
-    // Allow API routes to proceed without authentication
-    if (pathname.includes("api")) {
+    // Allow API routes and login page to proceed without authentication
+    if (pathname.startsWith("/api") || pathname === "/login") {
       return NextResponse.next();
     }
 
@@ -195,9 +222,9 @@ export const middleware = async (request: NextRequest) => {
         new URL(`/login?redirect=${pathname}`, request.url)
       );
     }
+
     return NextResponse.next();
   } catch (error) {
-    // Optionally handle errors (e.g., return an error response or log the issue)
     return NextResponse.redirect(new URL("/error", request.url));
   }
 };
