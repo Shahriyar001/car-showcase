@@ -28,9 +28,6 @@ export const middleware = async (request: NextRequest) => {
     const token = request.cookies.get("next-auth.session-token")?.value;
     const pathname = request.nextUrl.pathname;
 
-    // Allow API routes and login page to proceed without authentication
-
-    // Add custom logic here if needed
     if (!token) {
       console.log("Unauthenticated request detected");
     }
