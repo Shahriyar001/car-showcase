@@ -29,9 +29,6 @@ export const middleware = async (request: NextRequest) => {
     const pathname = request.nextUrl.pathname;
 
     // Allow API routes and login page to proceed without authentication
-    if (pathname.startsWith("/api") || pathname === "/login") {
-      return NextResponse.next();
-    }
 
     // Add custom logic here if needed
     if (!token) {
