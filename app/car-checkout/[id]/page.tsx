@@ -32,7 +32,7 @@ const Checkout = ({ params }: any) => {
     };
 
     const resp = await fetch(
-      "http://localhost:3000/car-checkout/api/car-booking",
+      "https://car-showcase-three-henna.vercel.app/car-checkout/api/car-booking",
       {
         method: "POST",
         body: JSON.stringify(carBooking),

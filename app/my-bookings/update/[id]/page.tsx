@@ -18,7 +18,7 @@ const Page = ({ params }: any) => {
 
   const loadBooking = async () => {
     const bookingDetail = await fetch(
-      `http://localhost:3000/my-bookings/api/booking/${unwrappedParams.id}`
+      `https://car-showcase-three-henna.vercel.app/my-bookings/api/booking/${unwrappedParams.id}`
     );
     const data = await bookingDetail.json();
     setBooking(data.data);
@@ -32,7 +32,7 @@ const Page = ({ params }: any) => {
       address: event.target.address.value,
     };
     const resp = await fetch(
-      `http://localhost:3000/my-bookings/api/booking/${unwrappedParams.id}`,
+      `https://car-showcase-three-henna.vercel.app/my-bookings/api/booking/${unwrappedParams.id}`,
       {
         method: "PATCH",
         body: JSON.stringify(updatedBooking),

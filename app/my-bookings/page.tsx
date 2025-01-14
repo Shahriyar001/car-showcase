@@ -22,7 +22,7 @@ const page = () => {
 
     try {
       const resp = await fetch(
-        `http://localhost:3000/my-bookings/api/${email}`
+        `https://car-showcase-three-henna.vercel.app/my-bookings/api/${email}`
       );
       const data = await resp.json();
       setBookings(data.myBookings || []);
@@ -33,7 +33,7 @@ const page = () => {
 
   const handleDelete = async (id: string) => {
     const deleted = await fetch(
-      `http://localhost:3000/my-bookings/api/booking/${id}`,
+      `https://car-showcase-three-henna.vercel.app/my-bookings/api/booking/${id}`,
       {
         method: "DELETE",
       }
