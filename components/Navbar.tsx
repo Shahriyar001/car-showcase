@@ -135,6 +135,8 @@ const Navbar = () => {
     if (!session) {
       e.preventDefault();
       alert("Please login first!");
+      window.location.href = "/login"; // Redirect to login
+      return;
     }
   };
 
